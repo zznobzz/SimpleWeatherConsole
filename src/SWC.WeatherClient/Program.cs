@@ -1,2 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using SWC.WeatherClient;
+
+var service = new ApplicationService(new ConsoleUI());
+service.Run();
+Console.WriteLine("Программа закрывается.");
