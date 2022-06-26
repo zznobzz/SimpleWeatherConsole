@@ -32,9 +32,9 @@ namespace SWC.WeatherManager.Command
         {
             var weatherService = new WeatherApiService();
             var weather=  await weatherService.GetCurrentWeatherAsync(PlaceName, apiKey);
-            if (weather != null)
+            if (weather?.Days.Length >= 1)
             {
-                Interface.WriteMessage($"Текущая погода в {weather.Address}");
+                Interface.WriteMessage($"Текущая погода в {weather.Address}, тот что в {weather.ResolvedAddress}");
                 foreach (var day in weather.Days)
                 {
                     Interface.WriteMessage($"{day.DateTime.ToShortDateString()}:");
@@ -51,6 +51,10 @@ namespace SWC.WeatherManager.Command
                                               );
                     }
                 }
+            }
+            else
+            {
+                Interface.WriteWarning("Что то пошло не так, погоды нет...");
             }
         }
     }

@@ -20,14 +20,20 @@ public class WeatherApiService
         var client = new HttpClient();
         var request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
         var response = await client.SendAsync(request);
-        response.EnsureSuccessStatusCode();
-        Console.WriteLine(response.StatusCode);
-        using Stream responseStream = await response.Content.ReadAsStreamAsync();
-        Rootobject? weather = await JsonSerializer.DeserializeAsync<Rootobject>(responseStream);
-        
-        var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile<WeatherMaperProfile>());
-        var mapper = mapperConfig.CreateMapper();
-        var adapted = mapper.Map<WeatherData>(weather);
-        return adapted;
+        if (response.IsSuccessStatusCode)
+        {
+            using Stream responseStream = await response.Content.ReadAsStreamAsync();
+            Rootobject? weather = await JsonSerializer.DeserializeAsync<Rootobject>(responseStream);
+
+            var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile<WeatherMaperProfile>());
+            var mapper = mapperConfig.CreateMapper();
+            var adapted = mapper.Map<WeatherData>(weather);
+            return adapted;
+        }
+        else
+        {
+            Console.WriteLine($"Запрос завершился с ошибкой. Причина :{response.StatusCode} ");
+            return null;
+        }
     }
 }
