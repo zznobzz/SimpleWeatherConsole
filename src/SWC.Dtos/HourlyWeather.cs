@@ -2,7 +2,7 @@
 
 public class HourlyWeather
 {
-    public string DateTime { get; set; }
+    public DateTime DateTime { get; set; }
     public int TimeEpoch { get; set; }
     public float Temp { get; set; }
     public float FeelsLike { get; set; }

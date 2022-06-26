@@ -2,7 +2,7 @@
 
 public class CurrentCondition
 {
-    public TimeOnly Time { get; set; }
+    public DateTime Time { get; set; }
     public int TimeEpoch { get; set; }
     public float Temp { get; set; }
     public float FeelsLike { get; set; }
@@ -24,9 +24,9 @@ public class CurrentCondition
     public string Conditions { get; set; }
     public string Icon { get; set; }
     public float Solarenergy { get; set; }
-    public TimeOnly Sunrise { get; set; }
+    public DateTime Sunrise { get; set; }
     public int SunriseEpoch { get; set; }
-    public TimeOnly Sunset { get; set; }
+    public DateTime Sunset { get; set; }
     public int SunsetEpoch { get; set; }
     public float Moonphase { get; set; }
 }

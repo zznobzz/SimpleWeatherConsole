@@ -51,12 +51,10 @@ namespace SWC.WeatherClient
         {
             switch (input)
             {
-                case "gcw":
-                case "GetCurrentWeather":
-                    return new GetCurrentWeatherCommand(_userInterface);
-                case "setApiKey":
-                    case "sak":
+                case "1":
                     return new SetApiKeyCommand(_userInterface);
+               case "2":
+                   return new GetCurrentWeatherCommand(_userInterface);
                 case "?":
                 case "h":
                 case "help":

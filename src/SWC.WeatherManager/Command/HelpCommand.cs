@@ -11,13 +11,11 @@ namespace SWC.WeatherManager.Command
         }
         protected override bool InternalCommand()
         {
-            Interface.WriteMessage("Справка по программе:");
-            Interface.WriteWarning("\t setApiKey (sak)");
-            Interface.WriteMessage("-Установить ключ API.");
-            Interface.WriteWarning("\t GetCurrentWeather (gcw)");
-            Interface.WriteMessage("-Узнать текущую погоду.");
-            Interface.WriteWarning("\t quit (q)");
-            Interface.WriteMessage("-Выйти из программы.");
+            Interface.WriteMessage("1 - Установить ключ API");
+            Interface.WriteMessage("2 - Узнать текущую погоду.");
+            Interface.WriteMessage("?, h, help - Получить справку по командам");
+            Interface.WriteMessage("q - Выход из приложения.");
+           
             return true;
         }
     }

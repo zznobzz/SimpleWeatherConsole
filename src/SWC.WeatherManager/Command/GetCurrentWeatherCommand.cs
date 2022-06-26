@@ -37,7 +37,7 @@ namespace SWC.WeatherManager.Command
                 Interface.WriteMessage($"Текущая погода в {weather.Address}");
                 foreach (var day in weather.Days)
                 {
-                    Interface.WriteMessage($"{day.DateTime.Date.ToShortDateString()}:");
+                    Interface.WriteMessage($"{day.DateTime.ToShortDateString()}:");
                     Interface.WriteMessage($"Температура: {day.Temp} C.");
                     Interface.WriteMessage($"Ощущается как: {day.FeelsLike} C.");
                     Interface.WriteMessage($"Условия: {day.Conditions}");
@@ -45,7 +45,7 @@ namespace SWC.WeatherManager.Command
                     Interface.WriteWarning("Температура по часам:");
                     foreach (var hourlyWeather in day.hours)
                     {
-                        Interface.WriteMessage($"{hourlyWeather.DateTime} : Температура: {hourlyWeather.Temp} C;" +
+                        Interface.WriteMessage($"{hourlyWeather.DateTime.ToLocalTime()} : Температура: {hourlyWeather.Temp} C;" +
                                                $"Ощущается как: {hourlyWeather.FeelsLike} C." +
                                                $" Условия: {hourlyWeather.Conditions};"
                                               );
