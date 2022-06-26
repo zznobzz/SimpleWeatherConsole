@@ -10,4 +10,8 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SWC.VisualCrossingWeatherApi\SWC.VisualCrossingWeatherApi.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -7,11 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="11.0.1" />
       <PackageReference Include="Flurl.Http" Version="3.2.4" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Models" />
+      <ProjectReference Include="..\SWC.Dtos\SWC.Dtos.csproj" />
     </ItemGroup>
 
 </Project>

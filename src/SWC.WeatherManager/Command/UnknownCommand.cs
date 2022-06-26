@@ -11,7 +11,7 @@ namespace SWC.WeatherManager.Command
         protected override bool InternalCommand()
         {
             Interface.WriteMessage("Неизвестная команда, может вы опечатались?");
-            return false;
+            return true;
         }
     }
 }

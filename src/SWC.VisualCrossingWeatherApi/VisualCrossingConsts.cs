@@ -1,4 +1,4 @@
-﻿namespace VisualCrossingWeatherApi;
+﻿namespace SWC.VisualCrossingWeatherApi;
 
 public static class VisualCrossingConsts
 {

@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SWC.Dtos\SWC.Dtos.csproj" />
     <ProjectReference Include="..\SWC.WeatherManager\SWC.WeatherManager.csproj" />
   </ItemGroup>
 
