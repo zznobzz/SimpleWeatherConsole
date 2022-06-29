@@ -31,7 +31,7 @@ namespace SWC.WeatherManager.Command
         protected async Task GetWeather(string place, string apiKey)
         {
             var weatherService = new WeatherApiService();
-            var weather=  await weatherService.GetCurrentWeatherAsync(PlaceName, apiKey);
+            var weather=  await weatherService.GetCurrentWeatherAsync(place, apiKey);
             if (weather?.Days.Length >= 1)
             {
                 Interface.WriteMessage($"Текущая погода в {weather.Address}, тот что в {weather.ResolvedAddress}");

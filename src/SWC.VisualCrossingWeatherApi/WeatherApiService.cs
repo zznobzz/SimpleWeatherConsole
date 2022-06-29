@@ -18,13 +18,27 @@ public class WeatherApiService
             .SetQueryParam("include", "current,hours")
             .SetQueryParam("lang", "ru");
 
-        var response = await requestUrl.GetAsync();
+        var response = await requestUrl.AllowAnyHttpStatus().GetAsync();
+        if (response.StatusCode<300)
+        {
+            var weather1 = response.GetJsonAsync<Rootobject>();
+            var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile<WeatherMaperProfile>());
+            var mapper = mapperConfig.CreateMapper();
+            var adapted = mapper.Map<WeatherData>(weather1.Result);
+            return adapted;
+        }
+        else if(response.StatusCode<500)
+        {
+            Console.WriteLine($"Вы что то сделали не так! Код ошибки: {response.StatusCode}");
+            return null;
+        }
+        else
+        {
+            Console.WriteLine($"На сервере что то пошло не так не так! Код ошибки: {response.StatusCode}");
+            return null;
+        }
         //TODO:Обработка ошибок запроса
-        var weather1 = response.GetJsonAsync<Rootobject>();
-        var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile<WeatherMaperProfile>());
-        var mapper = mapperConfig.CreateMapper();
-        var adapted = mapper.Map<WeatherData>(weather1.Result);
-        return adapted;
+        
 
 
         /*var client = new HttpClient();
